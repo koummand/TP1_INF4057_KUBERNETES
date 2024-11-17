@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../../../service-config"
+		},
+		{
+			"path": "../../../../service-proxy"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../service-users"
+		},
+		{
+			"path": "../../../../service-users (copie)"
+		}
+	]
+}

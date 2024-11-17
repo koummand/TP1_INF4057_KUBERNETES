@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../../service-banque"
+		},
+		{
+			"path": "../../../../../../../service-config"
+		},
+		{
+			"path": "../../../../../../../service-demande"
+		},
+		{
+			"path": "../../../../../../../service-proxy"
+		},
+		{
+			"path": "../../../../../../../service-register"
+		},
+		{
+			"path": "../../../../../.."
+		}
+	]
+}

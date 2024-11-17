@@ -1,0 +1,153 @@
+version: "3.8"
+services: #def les service de l'appli par ordre de demarage
+  service-config:
+    build: ./service-config
+    ports:
+      - "8080:8080" #port externe vers port de notre application
+    environment:
+      - SPRING_APPLICATION_NAME=service-config
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/koummand/cl-cf-kubernetess
+    networks:
+      - microservices-network
+
+  service-register:
+    build: ./service-register
+    # depends_on pour que le service ne demarre pas avant ce service
+    depends_on:
+      - service-config
+    environment:
+      - SPRING_APPLICATION_NAME=service-register
+      - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
+      - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
+    ports:
+      #port externe vers port de notre application
+      - "8081:8761" #port pour le service d'enregistrement
+    networks:
+      - microservices-network
+
+  service-users:
+    build: ./service-users
+    # depends_on pour que le service ne demarre pas avant ce service
+    depends_on:
+      - service-config
+      - service-register
+    environment:
+      - SPRING_APPLICATION_NAME=service-users
+      - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
+      - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
+    ports:
+      #port externe vers port de notre application
+      - "8084" #port pour le service d'enregistrement
+    networks:
+      - microservices-network
+
+  service-demande:
+    build: ./service-demande
+
+    # depends_on pour que le service ne demarre pas avant ce service
+    depends_on:
+      - service-config
+      - service-register
+    environment:
+      - SPRING_APPLICATION_NAME=service-demande
+      - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
+      - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
+    ports:
+      #port externe vers port de notre application
+      - "8090" #port pour le service d'enregistrement
+    networks:
+      - microservices-network
+
+  service-banque:
+    build: ./service-banque
+
+    # depends_on pour que le service ne demarre pas avant ce service
+    depends_on:
+      - service-config
+      - service-register
+    environment:
+      - SPRING_APPLICATION_NAME=service-banque
+      - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
+      - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
+    ports:
+      #port externe vers port de notre application
+      - "8091" #port pour le service d'enregistrement
+    networks:
+      - microservices-network
+
+  service-notification:
+    build: ./service-notification
+
+    # depends_on pour que le service ne demarre pas avant ce service
+    depends_on:
+      - service-config
+      - service-register
+    environment:
+      - SPRING_APPLICATION_NAME=service-notification
+      - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
+      - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
+    ports:
+      #port externe vers port de notre application
+      - "8092" #port pour le service d'enregistrement
+    networks:
+      - microservices-network
+
+  service-compte:
+    build: ./service-compte
+
+    # depends_on pour que le service ne demarre pas avant ce service
+    depends_on:
+      - service-config
+      - service-register
+    environment:
+      - SPRING_APPLICATION_NAME=service-compte
+      - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
+      - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
+    ports:
+      #port externe vers port de notre application
+      - "8093" #port pour le service d'enregistrement
+    networks:
+      - microservices-network
+
+  service-transaction:
+    build: ./service-transaction
+
+    # depends_on pour que le service ne demarre pas avant ce service
+    depends_on:
+      - service-config
+      - service-register
+    environment:
+      - SPRING_APPLICATION_NAME=service-transaction
+      - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
+      - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
+    ports:
+      #port externe vers port de notre application
+      - "8094" #port pour le service d'enregistrement
+    networks:
+      - microservices-network
+
+  service-proxy:
+    build: ./service-proxy
+    # depends_on pour que le service ne demarre pas avant ce service
+    depends_on:
+      - service-config
+      - service-register
+    environment:
+      - SPRING_APPLICATION_NAME=service-proxy
+      - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
+      - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
+    ports:
+      #port de notre application on ne met pas de pour externe
+      - "8082:8079" #port pour le service d'enregistrement
+    networks:
+      - microservices-network
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672" #port pour Rabbitmq
+      - "15672:15672" #Port pour l'interface de gestion
+    # gestion
+networks:
+  microservices-network:
+    driver: bridge

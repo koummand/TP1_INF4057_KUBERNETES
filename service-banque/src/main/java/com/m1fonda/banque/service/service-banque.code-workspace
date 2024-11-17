@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../.."
+		},
+		{
+			"path": "../../../../../../../../service-compte"
+		},
+		{
+			"path": "../../../../../../../../service-config"
+		},
+		{
+			"path": "../../../../../../../../service-demande"
+		},
+		{
+			"path": "../../../../../../../../service-notification"
+		},
+		{
+			"path": "../../../../../../../../service-proxy"
+		},
+		{
+			"path": "../../../../../../../../service-register"
+		},
+		{
+			"path": "../../../../../../../../service-transaction"
+		},
+		{
+			"path": "../../../../../../../../service-users"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}

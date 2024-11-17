@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../service-proxy"
+		},
+		{
+			"path": "../../../../service-registrie"
+		},
+		{
+			"path": "../../../../service-users"
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"vmware.vscode-boot-dev-pack"
+		]
+	}
+}
