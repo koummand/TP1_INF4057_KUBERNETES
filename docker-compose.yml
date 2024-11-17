@@ -3,7 +3,7 @@ services: #def les service de l'appli par ordre de demarage
   service-config:
     build: ./service-config
     ports:
-      - "8080:8080" #port externe vers port de notre application
+      - "8095:8080" #port externe vers port de notre application
     environment:
       - SPRING_APPLICATION_NAME=service-config
       - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/koummand/cl-cf-kubernetess
@@ -21,7 +21,7 @@ services: #def les service de l'appli par ordre de demarage
       - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
     ports:
       #port externe vers port de notre application
-      - "8081:8761" #port pour le service d'enregistrement
+      - "8096:8761" #port pour le service d'enregistrement
     networks:
       - microservices-network
 
@@ -138,7 +138,7 @@ services: #def les service de l'appli par ordre de demarage
       - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
     ports:
       #port de notre application on ne met pas de pour externe
-      - "8082:8079" #port pour le service d'enregistrement
+      - "8097:8079" #port pour le service d'enregistrement
     networks:
       - microservices-network
 
