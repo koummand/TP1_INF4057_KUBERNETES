@@ -20,7 +20,8 @@ spec:
     spec:  
       containers:  
         - name: service-config  
-          image: koummand/tp1_inf4057_kubernetes_service-config:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-config:latest 
+          imagePullPolicy: Always  
           ports:  
             - containerPort: 8080  
           env:  
@@ -59,7 +60,8 @@ spec:
     spec:  
       containers:  
         - name: service-register  
-          image: koummand/tp1_inf4057_kubernetes_service-register:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-register:latest
+          imagePullPolicy: Always   
           ports:  
             - containerPort: 8761  
           env:  
@@ -100,7 +102,8 @@ spec:
     spec:  
       containers:  
         - name: service-demande  
-          image: koummand/tp1_inf4057_kubernetes_service-demande:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-demande:latest 
+          imagePullPolicy: Always  
           ports: 
             - containerPort: 8090  
           env:  
@@ -141,7 +144,8 @@ spec:
     spec:  
       containers:  
         - name: service-banque  
-          image: koummand/tp1_inf4057_kubernetes_service-banque:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-banque:latest 
+          imagePullPolicy: Always  
           ports:  
             - containerPort: 8091  
           env:  
@@ -182,7 +186,8 @@ spec:
     spec:  
       containers:  
         - name: service-compte  
-          image: koummand/tp1_inf4057_kubernetes_service-compte:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-compte:latest 
+          imagePullPolicy: Always  
           ports:  
             - containerPort: 8093  
           env:  
@@ -223,7 +228,8 @@ spec:
     spec:  
       containers:  
         - name: service-notification  
-          image: koummand/tp1_inf4057_kubernetes_service-notification:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-notification:latest
+          imagePullPolicy: Always   
           ports:  
             - containerPort: 8092  
           env:  
@@ -264,7 +270,8 @@ spec:
     spec:  
       containers:  
         - name: service-users  
-          image: koummand/tp1_inf4057_kubernetes_service-users:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-users:latest
+          imagePullPolicy: Always   
           ports:  
             - containerPort: 8084 
           env:  
@@ -305,7 +312,8 @@ spec:
     spec:  
       containers:  
         - name: service-transaction  
-          image: koummand/tp1_inf4057_kubernetes_service-transaction:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-transaction:latest
+          imagePullPolicy: Always   
           ports:  
             - containerPort: 8094 
           env:  
@@ -346,7 +354,8 @@ spec:
     spec:  
       containers:  
         - name: service-proxy  
-          image: koummand/tp1_inf4057_kubernetes_service-proxy:latest  
+          image: koummand/tp1_inf4057_kubernetes_service-proxy:latest 
+          imagePullPolicy: Always  
           ports:  
             - containerPort: 8079  
           env:  
@@ -387,7 +396,8 @@ spec:
     spec:  
       containers:  
         - name: rabbitmq  
-          image: rabbitmq:management  
+          image: rabbitmq:management 
+          imagePullPolicy: Always  
           ports:  
             - containerPort: 5672  
             - containerPort: 15672  
