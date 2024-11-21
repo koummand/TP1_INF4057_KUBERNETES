@@ -2,15 +2,16 @@ package com.m1.fonda.event;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Column;
 import lombok.ToString;
 
 @ToString
 public class TransactionEvent {
 
 	@JsonProperty("transaction_id")
-	private String transaction_id;
-	@JsonProperty("account_id")
-	private String account_id;
+	private int transaction_id;
+	@JsonProperty("telephone")
+	private String telephone;
 	@JsonProperty("montant")
 	private float montant;
 	@JsonProperty("Type_transaction")
@@ -20,28 +21,28 @@ public class TransactionEvent {
 		super();
 	}
 
-	public TransactionEvent(String transaction_id, String account_id, float montant, String type_transaction) {
+	public TransactionEvent(int transaction_id, String telephone, float montant, String type_transaction) {
 		super();
 		this.transaction_id = transaction_id;
-		this.account_id = account_id;
+		this.telephone = telephone;
 		this.montant = montant;
 		Type_transaction = type_transaction;
 	}
 
-	public String getTransaction_id() {
+	public int getTransaction_id() {
 		return transaction_id;
 	}
 
-	public void setTransaction_id(String transaction_id) {
+	public void setTransaction_id(int transaction_id) {
 		this.transaction_id = transaction_id;
 	}
 
-	public String getAccount_id() {
-		return account_id;
+	public String getTelephone() {
+		return telephone;
 	}
 
-	public void setAccount_id(String account_id) {
-		this.account_id = account_id;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 	public float getMontant() {

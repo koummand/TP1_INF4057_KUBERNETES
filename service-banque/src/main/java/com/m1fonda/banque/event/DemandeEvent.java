@@ -3,6 +3,7 @@ package com.m1fonda.banque.event;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Column;
 import lombok.ToString;
 
 @ToString
@@ -15,6 +16,7 @@ public class DemandeEvent {
 	@JsonProperty("cni")
 	private String cni;
 	@JsonProperty("phoneNumber")
+	@Column(length = 20, nullable = false, unique = true)
 	private String phoneNumber;
 	@JsonProperty("password")
 	private String password;

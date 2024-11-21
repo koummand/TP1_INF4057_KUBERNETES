@@ -14,7 +14,7 @@ import com.serviceusers.model.Userbanque;
 import com.serviceusers.service.UserService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserController {
 
 	@Autowired
@@ -27,7 +27,6 @@ public class UserController {
 		userService.getAllUsers();
 		return userService.getAllUsers();
 	}
-
 
 	// delete user
 	@RequestMapping("/deleteuser/{id}")
@@ -45,6 +44,13 @@ public class UserController {
 	@GetMapping("/getalluser")
 	public List<Userbanque> getAllUserController() {
 		return userService.getAllUsers();
+	}
+
+	// get user
+	@GetMapping("/getuserPhone/{phoneNumber}")
+	public int getUserPhoneController(@PathVariable("phoneNumber") String phoneNumber) {
+		Userbanque user = userService.getUserByphone(phoneNumber);
+		return user.getId();
 	}
 
 }

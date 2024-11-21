@@ -16,7 +16,7 @@ public void recevoirNotification(NotificationEvent event) {
 
 Notification notification = new Notification();
 
-notification.setAccount_id(event.getAccount_id());
+notification.setTelephone(event.getTelephone());
 notification.setClientId(event.getClientId());
 notification.setMessage(event.getMessage());
 notification.setDate(event.getDate());

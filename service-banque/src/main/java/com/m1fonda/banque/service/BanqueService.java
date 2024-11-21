@@ -32,10 +32,10 @@ public class BanqueService {
 		}
 
 		String typeBanque = banquerepos.getTypeBanque();
-		if (!(typeBanque.equalsIgnoreCase("ORANGE") || typeBanque.equalsIgnoreCase("MTN")
-				|| typeBanque.equalsIgnoreCase("CAMTEL"))) {
+		if (!(typeBanque.equalsIgnoreCase("UBA") || typeBanque.equalsIgnoreCase("EXPRESS_UNION")
+				|| typeBanque.equalsIgnoreCase("CCA"))) {
 
-			System.out.println("Veuillez choisir parmi les opérateurs suivants : ORANGE, MTN, CAMTEL");
+			System.out.println("Veuillez choisir parmi les opérateurs suivants : UBA, EXPRESS_UNION, CCA");
 			return false;
 		}
 
@@ -43,14 +43,16 @@ public class BanqueService {
 		return true;// Validation réussie
 	}
 
-	public void creerCompte(int userId, String bankType) {
+	public void creerCompte(int userId,String telephone, String bankType) {
 
 // creer et enregistrez le compte
 		Compte compte = new Compte();
 		compte.setClientId(userId);
 		compte.setTypeBanque(bankType);
+		compte.setTelephone(telephone);
 
 		CompteEvent comptevent = new CompteEvent();
+		comptevent.setTelephone(compte.getTelephone());
 		comptevent.setClientId(compte.getClientId());
 		comptevent.setTypeBanque(compte.getTypeBanque());
 		System.out.println("Envoi d'une requette pour la creation de compte : " + comptevent);

@@ -54,13 +54,13 @@ return typeBanque;
 
 public void setTypeBanque(String typeBanque) {
 if (typeBanque != null && 
-(typeBanque.equalsIgnoreCase("ORANGE") ||
-typeBanque.equalsIgnoreCase("MTN") ||
-typeBanque.equalsIgnoreCase("CAMTEL"))) {
+(typeBanque.equalsIgnoreCase("UBA") ||
+typeBanque.equalsIgnoreCase("EXPRESS_UNION") ||
+typeBanque.equalsIgnoreCase("CCA"))) {
 
 this.typeBanque = typeBanque;
 } else {
-System.out.println("Veuillez choisir parmi les opérateurs suivants : ORANGE, MTN, CAMTEL");
+System.out.println("Veuillez choisir parmi les opérateurs suivants : UBA, EXPRESS_UNION, CCA");
 }
 }
 

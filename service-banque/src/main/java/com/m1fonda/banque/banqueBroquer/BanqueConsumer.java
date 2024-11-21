@@ -12,6 +12,8 @@ import com.m1fonda.banque.event.NotificationEvent;
 import com.m1fonda.banque.model.Demande;
 import com.m1fonda.banque.service.BanqueService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class BanqueConsumer {
 @Autowired
@@ -21,6 +23,7 @@ private RabbitTemplate rabbitTemplate;
 private BanqueService banqueService;
 
 @RabbitListener(queues = "demandeQueue")
+@Transactional
 public void validerDemande(DemandeEvent event) {
 
 Demande demande = new Demande();
@@ -37,12 +40,12 @@ System.out.println("Demande reçue pour validation : " + event);
 boolean isValid = banqueService.validerDemande(event);// Logique de validation
 
 if (isValid) {
-banqueService.creerCompte(demande.getClientId(), demande.getTypeBanque());
+banqueService.creerCompte(demande.getClientId(),demande.getPhoneNumber(), demande.getTypeBanque());
 
 } else {
 NotificationEvent notificationEvent = new NotificationEvent();
 
-notificationEvent.setAccount_id(null);
+notificationEvent.setTelephone(event.getPhoneNumber());
 notificationEvent.setClientId(event.getClientId());
 notificationEvent.setMessage("le compte n'a pas ete creer veillez verifier vos information");
 notificationEvent.setDate(LocalDateTime.now().toString());

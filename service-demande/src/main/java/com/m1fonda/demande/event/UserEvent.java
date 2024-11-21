@@ -1,7 +1,7 @@
 package com.m1fonda.demande.event;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
+import jakarta.persistence.Column;
 import lombok.ToString;
 
 
@@ -18,6 +18,7 @@ private String cni;
 @JsonProperty("email")
 private String email;
 @JsonProperty("phoneNumber")
+@Column(length = 20, nullable = false, unique = true)
 private String phoneNumber;
 public String getUserName() {
 return userName;

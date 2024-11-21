@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.m1.fonda.model.Transaction;
 import com.m1.fonda.service.TransactionService;
 
+import jakarta.transaction.Transactional;
+
 @RestController
 @RequestMapping("/api/transaction")
 public class TransactionController {
@@ -18,27 +20,30 @@ public class TransactionController {
 
 //	public String effectuerDepot(@PathVariable String accountId, @PathVariable BigDecimal montant) {
 	@PostMapping("/depot")
+	@Transactional
 	public Transaction effectuerDepot(@RequestBody Transaction transaction) throws Exception {
-		String accountId = transaction.getAccount_id();
+
+		String telephone = transaction.getTelephone();
 		float montant = transaction.getMontant();
-	
-		Transaction transactionsave = transactionService.effectuerDepot(accountId, montant);
+
+		Transaction transactionsave = transactionService.effectuerDepot(telephone, montant);
 		return transactionsave;
 //		return "Dépôt effectué avec succès";
 	}
 
 //	public String effectuerRetrait(@PathVariable String accountId, @PathVariable BigDecimal montant) {
 	@PostMapping("/retrait")
+	@Transactional
 	public Transaction effectuerRetrait(@RequestBody Transaction transaction) throws Exception {
 
 		try {
-			String accountId = transaction.getAccount_id();
+			String telephone = transaction.getTelephone();
 			float montant = transaction.getMontant();
-			Transaction transactionsave = transactionService.effectuerRetrait(accountId, montant);
+			Transaction transactionsave = transactionService.effectuerRetrait(telephone, montant);
 			return transactionsave;
 //			return "Retrait effectué avec succès";
 		} catch (Exception e) {
-			throw new IllegalArgumentException("Erreur: "+e.getMessage());
+			throw new IllegalArgumentException("Erreur: " + e.getMessage());
 		}
 	}
 }

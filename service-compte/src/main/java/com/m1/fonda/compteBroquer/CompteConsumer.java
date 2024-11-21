@@ -8,18 +8,20 @@ import com.m1.fonda.event.CompteEvent;
 import com.m1.fonda.event.TransactionEvent;
 import com.m1.fonda.service.CompteService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class CompteConsumer {
 
 	@Autowired
 	private CompteService compteService;
-
+	
 	@RabbitListener(queues = "banqueQueue")
 	public void creerCompte(CompteEvent event) {
 
 		System.out.println("requete recu pour creation de  compte " + event);
 
-		compteService.creerComptes(event.getClientId(), event.getTypeBanque());
+		compteService.creerComptes(event.getClientId(), event.getTelephone(), event.getTypeBanque());
 
 	}
 

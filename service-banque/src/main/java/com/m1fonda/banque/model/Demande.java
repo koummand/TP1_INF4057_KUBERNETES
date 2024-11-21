@@ -2,6 +2,7 @@ package com.m1fonda.banque.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Demande {
 	private int clientId;
 	private String nom;
 	private String cni;
+	@Column(length = 20, nullable = false, unique = true)
 	private String phoneNumber;
 	private String password;
 	private String dateDemande;

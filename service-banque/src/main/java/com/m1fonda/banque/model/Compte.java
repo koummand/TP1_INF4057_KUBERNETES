@@ -1,16 +1,16 @@
 package com.m1fonda.banque.model;
 
-import java.math.BigDecimal;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
 public class Compte {
-
 	@Id
 	private String account_id;
 	private int clientId;
+	@Column(length = 20, nullable = false, unique = true)
+	private String telephone;
 	private String typeBanque;
 	private float solde;
 
@@ -18,12 +18,21 @@ public class Compte {
 		super();
 	}
 
-	public Compte(String account_id, int clientId, String typeBanque, float solde) {
+	public Compte(String account_id, int clientId,String telephone, String typeBanque, float solde) {
 		super();
 		this.account_id = account_id;
 		this.clientId = clientId;
+		this.telephone=telephone;
 		this.typeBanque = typeBanque;
 		this.solde = solde;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 	public String getAccount_id() {
@@ -59,7 +68,8 @@ public class Compte {
 	}
 
 	public void miseAjourSolde(float montant) {
-		this.solde = this.solde + montant;
-	}
 
+		this.solde = this.solde + montant;
+
+	}
 }

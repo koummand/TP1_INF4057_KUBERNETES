@@ -18,15 +18,13 @@ public class TransactionService {
 	@Autowired
 	private TransactionRepository transactionRepository;
 
-	public Transaction effectuerDepot(String accountId, float montant) throws Exception {
-		if (accountId == null) {
+	public Transaction effectuerDepot(String telephone, float montant) throws Exception {
+		if (telephone == null) {
 			throw new IllegalArgumentException("Événement de depot invalide.");
 		}
 // Crée et enregistre la transaction
 		Transaction transaction = new Transaction();
-
-		transaction.setTransaction_id("depot_" + accountId);
-		transaction.setAccount_id(accountId);
+		transaction.setTelephone(telephone);
 		transaction.setMontant(montant);
 		transaction.setType_transaction("DEPOSIT");
 
@@ -35,7 +33,7 @@ public class TransactionService {
 		TransactionEvent transactionEvent = new TransactionEvent();
 
 		transactionEvent.setTransaction_id(transactionrepos.getTransaction_id());
-		transactionEvent.setAccount_id(transactionrepos.getAccount_id());
+		transactionEvent.setTelephone(transactionrepos.getTelephone());
 		transactionEvent.setMontant(transactionrepos.getMontant());
 		transactionEvent.setType_transaction(transactionrepos.getType_transaction());
 
@@ -44,21 +42,21 @@ public class TransactionService {
         return transactionrepos;
 	}
 
-	public Transaction effectuerRetrait(String accountId, float montant) throws Exception {
-		if (accountId == null) {
+	public Transaction effectuerRetrait(String telephone, float montant) throws Exception {
+		if (telephone == null) {
 			throw new IllegalArgumentException("Événement de retrait invalide.");
 		}
 		Transaction transaction = new Transaction();
-		transaction.setTransaction_id("retrait_" + accountId);
-		transaction.setAccount_id(accountId);
+		transaction.setTelephone(telephone);
 		transaction.setMontant(montant);
 		transaction.setType_transaction("WITHDRAWAL");
 
 		Transaction transactionrepos = transactionRepository.save(transaction);
 
 		TransactionEvent transactionEvent = new TransactionEvent();
+		
 		transactionEvent.setTransaction_id(transactionrepos.getTransaction_id());
-		transactionEvent.setAccount_id(transactionrepos.getAccount_id());
+		transactionEvent.setTelephone(transactionrepos.getTelephone());
 		transactionEvent.setMontant(transactionrepos.getMontant());
 		transactionEvent.setType_transaction(transactionrepos.getType_transaction());
 

@@ -1,5 +1,6 @@
 package com.m1.fonda.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -8,6 +9,8 @@ public class Compte {
 	@Id
 	private String account_id;
 	private int clientId;
+	@Column(length = 20, nullable = false, unique = true)
+	private String telephone;
 	private String typeBanque;
 	private float solde;
 
@@ -15,12 +18,21 @@ public class Compte {
 		super();
 	}
 
-	public Compte(String account_id, int clientId, String typeBanque, float solde) {
+	public Compte(String account_id, int clientId,String telephone, String typeBanque, float solde) {
 		super();
 		this.account_id = account_id;
 		this.clientId = clientId;
+		this.telephone=telephone;
 		this.typeBanque = typeBanque;
 		this.solde = solde;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 	public String getAccount_id() {

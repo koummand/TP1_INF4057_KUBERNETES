@@ -11,7 +11,7 @@ public class Notification {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
 	private int clientId;
-	private String account_id;
+	private String telephone;
 	private String message;
 	private String date;
 //encoure rejeter accepter
@@ -20,11 +20,11 @@ public class Notification {
 public Notification() {
 		super();
 	}
-public Notification(int id,int clientId, String account_id, String message, String date, String status) {
+public Notification(int id,int clientId, String telephone, String message, String date, String status) {
 	super();
 	this.id = id;
 	this.clientId=clientId;
-	this.account_id=account_id;
+	this.telephone=telephone;
 	this.message = message;
 	this.date = date;
 	this.status = status;
@@ -54,6 +54,12 @@ public void setStatus(String status) {
 	this.status = status;
 }
 
+public String getTelephone() {
+	return telephone;
+}
+public void setTelephone(String telephone) {
+	this.telephone = telephone;
+}
 public int getClientId() {
 	return clientId;
 }
@@ -62,11 +68,4 @@ public void setClientId(int clientId) {
 	this.clientId = clientId;
 }
 
-public String getAccount_id() {
-	return account_id;
-}
-
-public void setAccount_id(String account_id) {
-	this.account_id = account_id;
-}
 }

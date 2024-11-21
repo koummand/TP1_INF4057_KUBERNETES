@@ -1,6 +1,7 @@
 package com.serviceusers.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,15 @@ return userRepo.findAll();
 // recherche d un utilisateur
 public Userbanque getUsers(int id) {
 return userRepo.findById(id).orElse(null);
-
 }
+
+//recherche d un utilisateur
+public Userbanque getUserByphone(String telephone) {
+	try {
+		return userRepo.findByPhoneNumber(telephone);
+	}catch(Exception e) {
+		throw new NoSuchElementException("utilisateur introuvable");
+	}
+}
+
 }

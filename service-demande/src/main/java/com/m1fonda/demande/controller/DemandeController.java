@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import com.m1fonda.demande.model.Demande;
 import com.m1fonda.demande.service.DemandeService;
 
-@RequestMapping("/api")
+@RequestMapping("/api/demande")
 @RestController
 public class DemandeController {
 @Autowired

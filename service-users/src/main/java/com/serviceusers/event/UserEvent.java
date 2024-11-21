@@ -2,7 +2,7 @@ package com.serviceusers.event;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
+import jakarta.persistence.Column;
 import lombok.ToString;
 
 
@@ -33,6 +33,7 @@ public class UserEvent {
 	@JsonProperty("email")
 	private String email;
 	@JsonProperty("phoneNumber")
+	@Column(length = 20, nullable = false, unique = true)
 	private String phoneNumber;
 	@JsonProperty("false")
 	private Boolean compteActif = false;

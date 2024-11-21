@@ -11,7 +11,7 @@ import com.m1.fonda.model.Compte;
 import com.m1.fonda.service.CompteService;
 
 @RestController
-@RequestMapping("/api/comptes")
+@RequestMapping("/api/compte")
 public class CompteController {
 
 	@Autowired
@@ -30,8 +30,14 @@ public class CompteController {
 	}
 
 	@PutMapping("/{userId}/compte")
-	public Compte creerCompte(@PathVariable int userId, @PathVariable String bankType) {
-		Compte compte = compteService.creerComptes(userId, bankType);
+	public Compte creerCompte(@PathVariable int userId, @PathVariable String telephone, @PathVariable String bankType) {
+		Compte compte = compteService.creerComptes(userId, telephone, bankType);
 		return compte;
+	}
+	
+	@GetMapping("/getCompte/{telephone}")
+	public Compte Compte (@PathVariable String telephone) {
+		System.out.println(telephone);
+		return compteService.getCompte(telephone);
 	}
 }
