@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.m1.fonda.model.Transaction;
 
 @RepositoryRestResource
-public interface TransactionRepository extends JpaRepository<Transaction, String>{
+public interface TransactionRepository extends JpaRepository<Transaction, Integer>{
 
 }

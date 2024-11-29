@@ -8,6 +8,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.m1.fonda.model.Notification;
 
 @RepositoryRestResource
-public interface NotificationRepository extends JpaRepository<Notification, String> {
-    List<Notification> findByClientId(int clientId);
+public interface NotificationRepository extends JpaRepository<Notification, Integer> {
+List<Notification> findByClientId(int clientId);
 }
