@@ -19,7 +19,6 @@ services: #def les service de l'appli par ordre de demarage
       - SPRING_APPLICATION_NAME=service-register
       - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
       - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
-
     ports:
       #port externe vers port de notre application
       - "8095:8761" #port pour le service d'enregistrement
@@ -36,7 +35,6 @@ services: #def les service de l'appli par ordre de demarage
       - SPRING_APPLICATION_NAME=service-users
       - SPRING_CLOUD_CONFIG_URI=http://service-config:8080
       - SPRING__CONFIG_IMPORT=configserver:http://service-config:8080
-
     ports:
       #port externe vers port de notre application
       - "8084" #port pour le service d'enregistrement
@@ -45,7 +43,6 @@ services: #def les service de l'appli par ordre de demarage
 
   service-demande:
     build: ./service-demande
-
     # depends_on pour que le service ne demarre pas avant ce service
     depends_on:
       - service-config
@@ -62,7 +59,6 @@ services: #def les service de l'appli par ordre de demarage
 
   service-banque:
     build: ./service-banque
-
     # depends_on pour que le service ne demarre pas avant ce service
     depends_on:
       - service-config
@@ -79,7 +75,6 @@ services: #def les service de l'appli par ordre de demarage
 
   service-notification:
     build: ./service-notification
-
     # depends_on pour que le service ne demarre pas avant ce service
     depends_on:
       - service-config
@@ -96,7 +91,6 @@ services: #def les service de l'appli par ordre de demarage
 
   service-compte:
     build: ./service-compte
-
     # depends_on pour que le service ne demarre pas avant ce service
     depends_on:
       - service-config
@@ -113,7 +107,6 @@ services: #def les service de l'appli par ordre de demarage
 
   service-transaction:
     build: ./service-transaction
-
     # depends_on pour que le service ne demarre pas avant ce service
     depends_on:
       - service-config

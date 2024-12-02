@@ -52,15 +52,8 @@ return new Queue("banqueQueue", true, false, false); // on creer la queue de la 
 }
 
 @Bean
-public Queue transactiondepotQueue() {
-return new Queue("transactiondepotQueue", true, false, false); // on creer la queue de transaction si elle n existe
-// pas
-}
-
-@Bean
-public Queue transactionretraitQueue() {
-return new Queue("transactionretraitQueue", true, false, false); // on creer la queue de transaction si elle n existe
-// pas
+@public Queue transactionQueue(){
+return new Queue("transactionQueue", true, false, false);// on creer la queue de transaction si elle n existe pas
 }
 
 @Bean
